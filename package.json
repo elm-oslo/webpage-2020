@@ -1,0 +1,28 @@
+{
+  "name": "webpage-2020",
+  "version": "1.0.0",
+  "description": "Webpage 2020",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "elm-app start",
+    "build": "elm-app build",
+    "test": "elm-app test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elm-oslo/webpage-2020.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elm-oslo/webpage-2020/issues"
+  },
+  "homepage": "https://github.com/elm-oslo/webpage-2020#readme",
+  "dependencies": {
+    "create-elm-app": "^4.1.1"
+  }
+}
