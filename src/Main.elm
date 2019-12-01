@@ -62,7 +62,7 @@ update msg model =
 view : Model -> Html Msg
 view model =
     div [ class "container" ]
-        [ h1 [] [ text "Oslo Elm Day 2020" ]
+        [ h1 [] [ text "Oslo Elm Days 2020" ]
         , p [ class "intro" ]
             [ text "May 15 and 16 in Oslo, Norway"
             ]

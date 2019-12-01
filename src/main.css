@@ -98,6 +98,8 @@ a:hover {
   color: var(--color-darkBlue);
   width: 100%;
   max-width: 10rem;
+
+  transition: all 0.2s ease-in-out;
 }
 
 .submitButton:hover {
