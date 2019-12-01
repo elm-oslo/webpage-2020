@@ -1,10 +1,14 @@
 module Main exposing (Model, Msg(..), init, main, update, view)
 
-import Accessibility as Html exposing (..)
+import Accessibility exposing (..)
 import Browser
 import Html exposing (Html)
-import Html.Attributes exposing (class, href, id, placeholder, type_)
+import Html.Attributes exposing (class, disabled, href, id, placeholder, type_)
 import Html.Events exposing (onClick, onInput)
+import Http
+import Json.Decode as Decode
+import Json.Encode as Encode
+import RemoteData exposing (RemoteData(..), WebData)
 import Validate
 
 
@@ -15,26 +19,49 @@ import Validate
 type alias Model =
     { email : String
     , validationError : Maybe String
+    , submitStatus : WebData ()
     }
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( { email = "", validationError = Nothing }, Cmd.none )
+    ( { email = ""
+      , validationError = Nothing
+      , submitStatus = NotAsked
+      }
+    , Cmd.none
+    )
 
 
 
 ---- UPDATE ----
 
 
-submitEmail : String -> Cmd msg
+submitEmail : String -> Cmd Msg
 submitEmail email =
-    Cmd.none
+    let
+        url =
+            "/.netlify/functions/save-email"
+
+        body =
+            Http.jsonBody <|
+                Encode.object
+                    [ ( "email", Encode.string email ) ]
+    in
+    Http.post
+        { url = url
+        , body = body
+        , expect =
+            Http.expectJson
+                (RemoteData.fromResult >> SubmitCompleted)
+                (Decode.succeed ())
+        }
 
 
 type Msg
     = EmailUpdated String
     | SubmitClicked
+    | SubmitCompleted (WebData ())
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -47,12 +74,21 @@ update msg model =
 
         SubmitClicked ->
             if Validate.isValidEmail model.email then
-                ( model, submitEmail model.email )
+                ( { model
+                    | submitStatus = Loading
+                  }
+                , submitEmail model.email
+                )
 
             else
                 ( { model | validationError = Just "This looks like an invalid email address" }
                 , Cmd.none
                 )
+
+        SubmitCompleted data ->
+            ( { model | submitStatus = data }
+            , Cmd.none
+            )
 
 
 
@@ -66,32 +102,12 @@ view model =
         , p [ class "intro" ]
             [ text "May 15 and 16 in Oslo, Norway"
             ]
-        , form [ class "form" ]
-            [ p [ class "newsletterIntro" ]
-                [ div [] [ text "Want to stay up to date with the latest news?" ]
-                , div [] [ text "Sign up for our newsletter!" ]
-                ]
-            , div [ class "inputContainer" ]
-                [ labelHidden "email-input"
-                    []
-                    (text "hello@osloelmdays.no")
-                    (inputText model.email
-                        [ id "email-input"
-                        , placeholder "hello@osloelmdays.no"
-                        , class "email"
-                        , onInput EmailUpdated
-                        ]
-                    )
-                ]
-            , case model.validationError of
-                Just err ->
-                    div [ class "validationError" ] [ text err ]
+        , case model.submitStatus of
+            Success _ ->
+                p [] [ text "Thanks for subscribing!" ]
 
-                Nothing ->
-                    text ""
-            , button [ class "submitButton", type_ "button", onClick SubmitClicked ]
-                [ text "Submit" ]
-            ]
+            _ ->
+                viewSignupForm model
         , p [ class "removeFromNewsletter" ]
             [ span []
                 [ text "If you want to be removed from the newsletter, send an email to "
@@ -99,21 +115,55 @@ view model =
             , a [ href "mailto:hello@osloelmdays.no" ]
                 [ text "hello@osloelmdays.no" ]
             ]
+        ]
 
-        --                    , Element.paragraph [ Font.size 16 ]
-        --                        [ Element.text "If you want to be removed from the newsletter, send an email to "
-        --                        , Element.link
-        --                            [ Font.underline
-        --                            , Element.mouseOver
-        --                                [ Font.color <| color.yellow
-        --                                ]
-        --                            , Element.htmlAttribute <|
-        --                                HtmlA.style "transition" "all 0.2s ease-in-out"
-        --                            ]
-        --                            { url = "mailto:hello@osloelmday.no"
-        --                            , label = Element.text "hello@osloelmday.no"
-        --                            }
-        --                        ]
+
+viewSignupForm : Model -> Html Msg
+viewSignupForm model =
+    form [ class "form" ]
+        [ p [ class "newsletterIntro" ]
+            [ div [] [ text "Want to stay up to date with the latest news?" ]
+            , div [] [ text "Sign up for our newsletter!" ]
+            ]
+        , div [ class "inputContainer" ]
+            [ labelHidden "email-input"
+                []
+                (text "hello@osloelmdays.no")
+                (inputText model.email
+                    [ id "email-input"
+                    , placeholder "hello@osloelmdays.no"
+                    , class "email"
+                    , onInput EmailUpdated
+                    ]
+                )
+            ]
+        , case model.validationError of
+            Just err ->
+                div [ class "validationError" ] [ text err ]
+
+            Nothing ->
+                text ""
+        , case model.submitStatus of
+            Failure _ ->
+                div [ class "validationError" ]
+                    [ text "Something went wrong while submitting" ]
+
+            _ ->
+                text ""
+        , button
+            [ class "submitButton"
+            , type_ "button"
+            , onClick SubmitClicked
+            , disabled <| RemoteData.isLoading model.submitStatus
+            ]
+            [ text <|
+                case model.submitStatus of
+                    Loading ->
+                        "Submitting..."
+
+                    _ ->
+                        "Submit"
+            ]
         ]
 
 
