@@ -102,6 +102,12 @@ view model =
         , p [ class "intro" ]
             [ text "May 15 and 16 in Oslo, Norway"
             ]
+        , p [ class "cfp" ]
+            [ text "Want to speak at Oslo Elm Days 2020?"
+            , br []
+            , a [ href "https://forms.gle/T4UXj83Fs7jetR577" ]
+                [ text "Check out our Call for Presentations!" ]
+            ]
         , case model.submitStatus of
             Success _ ->
                 p [] [ text "Thanks for subscribing!" ]
