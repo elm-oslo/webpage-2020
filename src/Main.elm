@@ -4,7 +4,7 @@ import Accessibility exposing (..)
 import Browser
 import Html exposing (Html)
 import Html.Attributes exposing (class, disabled, href, id, placeholder, type_)
-import Html.Events exposing (onClick, onInput)
+import Html.Events exposing (onClick, onInput, onSubmit)
 import Http
 import Json.Decode as Decode
 import Json.Encode as Encode
@@ -126,7 +126,7 @@ view model =
 
 viewSignupForm : Model -> Html Msg
 viewSignupForm model =
-    form [ class "form" ]
+    Html.form [ class "form", onSubmit SubmitClicked ]
         [ p [ class "newsletterIntro" ]
             [ div [] [ text "Want to stay up to date with the latest news?" ]
             , div [] [ text "Sign up for our newsletter!" ]
