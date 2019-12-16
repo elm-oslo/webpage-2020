@@ -13,7 +13,7 @@ body {
   font-family: "AvenirLTPro-Book", sans-serif;
   margin: 0;
   text-align: center;
-  --bg-overlay: rgba(0, 0, 0, 0.7);
+  --bg-overlay: rgba(0, 0, 0, 0.4);
   background: linear-gradient(var(--bg-overlay), var(--bg-overlay)),
     url("../public/2019.jpg");
   background-repeat: no-repeat;
