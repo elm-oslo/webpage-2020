@@ -1,26 +1,21 @@
-const ParcelProxyServer = require("parcel-proxy-server");
+const proxy = require("http-proxy-middleware");
+const Bundler = require("parcel-bundler");
+const express = require("express");
+const bundler = new Bundler("public/index.html", {
+  cache: false
+});
 
-// configure the proxy server
-const server = new ParcelProxyServer({
-  entryPoint: "public/index.html",
-  parcelOptions: {},
-  proxies: {
-    "/.netlify/functions": {
-      target: "http://localhost:9000",
-      pathRewrite: {
-        "^/\\.netlify/functions": ""
-      }
+const app = express();
+const PORT = process.env.PORT || 1234;
+app.use(
+  "/.netlify/functions",
+  proxy({
+    target: "http://localhost:9000",
+    pathRewrite: {
+      "/.netlify/functions/": ""
     }
-  }
-});
+  })
+);
 
-// the underlying parcel bundler is exposed on the server
-// and can be used if needed
-server.bundler.on("buildEnd", () => {
-  console.log("Build completed!");
-});
-
-// start up the server
-server.listen(1234, () => {
-  console.log("Parcel proxy server has started");
-});
+app.use(bundler.middleware());
+app.listen(PORT);
