@@ -1,16 +1,12 @@
+import lottie from "lottie-web";
+
 import "./styles.css";
 import { Elm } from "./Main.elm";
 import initAnimation from "./animation/main";
 
-import lottie from "lottie-web";
-
 var app = Elm.Main.init({
   node: document.getElementById("root")
 });
-
-console.log(app);
-
-///
 
 // -----
 
@@ -32,13 +28,10 @@ HTMLElement.prototype.removeClass = function(remove) {
   this.className = newClassName;
 };
 
-let ticket_btn_anim;
-
-const ticketAnimName = "ticket-anim";
+let ticketBtnAnimation;
 
 app.ports.init.subscribe(function() {
-  ticket_btn_anim = lottie.loadAnimation({
-    name: ticketAnimName,
+  ticketBtnAnimation = lottie.loadAnimation({
     container: document.getElementById("ticket_btn_animation"),
     renderer: "svg",
     autoplay: false,
@@ -47,12 +40,7 @@ app.ports.init.subscribe(function() {
     rendererSettings: {
       viewBoxOnly: false
     }
-    // path: "ticket.json"
   });
-
-  // ticket_btn_anim.play();
-
-  // console.log("animation loaded", ticket_btn_anim);
 
   setTimeout(function() {
     var nodes = document.querySelectorAll(".animate");
@@ -78,12 +66,8 @@ app.ports.scrollToId.subscribe(function(id) {
 });
 
 app.ports.startBuyTicketAnim.subscribe(function() {
-  console.log("start anim", { ticket_btn_anim });
-  ticket_btn_anim.goToAndPlay(0, true);
-  // lottie.play(ticketAnimName);
-  // ticket_btn_anim.play();
+  ticketBtnAnimation.goToAndPlay(0, true);
 });
 app.ports.stopBuyTicketAnim.subscribe(function() {
-  ticket_btn_anim.goToAndStop(1, true);
-  // lottie.
+  ticketBtnAnimation.goToAndStop(1, true);
 });

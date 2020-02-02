@@ -1,7 +1,10 @@
 import * as THREE from "three";
 import RoundedBoxGeometry from "./roundedGeometry";
 
-// window.initAnimation = initAnimation;
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * max) + min;
+}
+
 function initAnimation() {
   var delta = 0;
 
@@ -119,7 +122,6 @@ function initAnimation() {
 
   // Update on resize
   function onWindowResize() {
-    console.log("has changed");
     var width = window.innerWidth;
     var height = window.innerHeight / 1.5;
     camera.aspect = width / height;
