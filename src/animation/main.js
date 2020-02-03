@@ -41,12 +41,12 @@ function initAnimation() {
   // Box 1
   var box_1_speed = 0.7;
   var box_1_colorArray = [
-    0xf55050,
-    0xf55050,
-    0xf55050,
-    0xf55050,
-    0xf55050,
-    0xf55050,
+    0xf35b5b,
+    0xf35b5b,
+    0xf35b5b,
+    0xf35b5b,
+    0xf35b5b,
+    0xf35b5b,
     0xffffff,
     0x06354d,
     0x06354d,

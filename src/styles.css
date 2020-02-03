@@ -3,9 +3,10 @@
   --color-sand: #fae8d4;
   --color-white: #ffffff;
   --color-lightBlue: #0f567a;
-  --color-red: #f55050;
+  --color-red: #f35b5b;
   --color-lightRed: #ff9191;
-  --color-darkBlue: rgb(6, 53, 77);
+  --color-darkBlue: #06354d;
+  --color-black: #03151f;
 
   --color-lightestBlue: #c5e6ff;
   --color-darkBlue__opacity30: rgba(6, 53, 77, 0.3);
@@ -41,8 +42,8 @@
   --color-aboutPage-background: var(--color-darkBlue);
   --color-aboutPage-text: var(--color-lightestBlue);
   --color-speakersPage-background: var(--color-red);
-  --color-speakersPage-text: var(--color-darkBlue);
-  --color-speakersPage-heading: var(--color-darkBlue);
+  --color-speakersPage-text: var(--color-black);
+  --color-speakersPage-heading: var(--color-black);
   --color-speakersPage-link: var(--color-lightBlue);
   --color-schedulePage-background: var(--color-lightBlue);
   --color-schedulePage-text: var(--color-white);
