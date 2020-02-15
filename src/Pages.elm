@@ -4,141 +4,85 @@ import Dict exposing (Dict)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Markdown
-import Model exposing (Msg, ScheduleEntry(..), scheduleEntries)
+import Model exposing (Msg, ScheduleEntry(..))
 import Route
 import Schedule
 import Speakers exposing (Speaker)
-import Talks exposing (Slottime, Talk)
+import Talks exposing (Talk)
 
 
 viewAbout : Html a
 viewAbout =
-    div []
-        [ h2 []
-            [ text "The Elm Conference With A Nordic Twist" ]
-        , h3 []
-            [ text "What to expect?" ]
-        , p []
-            [ text "A full day conference filled with interesting talks and discussions about Elm. The conference will feature a total of 18 speakers, with talks about a variety of topics. For parts of the day there will be two tracks with talks running in parallel." ]
-        , p []
-            [ text "There  will be a conference dinner and afterparty at the venue shortly after the finishing keynote. On the day before the conference, there will be a pre-conf event with workshops and possibly some lightning talks. This is an excellent opportunity to mingle with other Elm enthusiasts before the conference." ]
-        , h3 []
-            [ text "Why Elm?" ]
-        , p []
-            [ text "Elm is a fast-growing programming language for the web that significantly improves development speed, reliability, maintainability and developer experience. With React and Redux’s popularity on the frontend, functional programming practices are going mainstream and many are looking to Elm as the natural next step." ]
-        , h3 []
-            [ text "Intended audience" ]
-        , p []
-            [ text "The intended audience for the conference ranges from the curious JavaScript developer to the experienced functional programmer." ]
-        , h3 []
-            [ text "Where?" ]
-        , p []
-            [ text "The conference will be hosted at the beautiful "
-            , em []
-                [ text "Månefisken." ]
-            ]
-        , h3 []
-            [ text "Pre-Conference Event" ]
-        , p []
-            [ text "Details aren't finalized yet, but there will be something happening on Friday night before the conference. If travelling to Oslo, you'll want to be in town for this!"
-            ]
-        , h3 []
-            [ text "Tickets" ]
-        , p []
-            [ a [ href "https://www.checkin.no/osloelmday" ]
-                [ text "Available now!" ]
-            ]
-        , h3 []
-            [ text "Food" ]
-        , p []
-            [ text "Coffee, tea and fruit will be provided throughout the day. The ticket price includes lunch during the event and dinner at the afterparty. Please contact us if you have any dietary restrictions." ]
-        , h3 []
-            [ text "Afterparty" ]
-        , p []
-            [ text "Will be hosted at the venue. We hope to see you there!" ]
-        , h3 []
-            [ text "Contact us" ]
-        , p []
-            [ ul []
-                [ li []
-                    [ a [ href "https://twitter.com/osloelmday" ]
-                        [ text "@OsloElmDay" ]
-                    ]
-                , li []
-                    [ a [ href "mailto:hello@osloelmday.no" ]
-                        [ text "hello@osloelmday.no" ]
-                    ]
-                ]
-            ]
-        , h3 []
-            [ text "Who are we?" ]
-        , p []
-            [ text "The conference is organized by enthusiastic members of the Norwegian Elm community." ]
-        , p []
-            [ ul []
-                [ li []
-                    [ text "Erik Wendel – "
-                    , a [ href "https://twitter.com/ewndl" ]
-                        [ text "@ewndl" ]
-                    ]
-                , li []
-                    [ text "Ingar Almklov – "
-                    , a [ href "https://twitter.com/ingara" ]
-                        [ text "@ingara" ]
-                    ]
-                , li []
-                    [ text "Kjetil Valle – "
-                    , a [ href "https://twitter.com/kjetilvalle" ]
-                        [ text "@kjetilvalle" ]
-                    ]
-                , li []
-                    [ text "Erlend Hamberg – "
-                    , a [ href "https://twitter.com/ehamberg" ]
-                        [ text "@ehamberg" ]
-                    ]
-                , li []
-                    [ text "Magnus Rundberget – "
-                    , a [ href "https://twitter.com/mrundberget" ]
-                        [ text "@mrundberget" ]
-                    ]
-                , li []
-                    [ text "Martin Rechsteiner – "
-                    , a [ href "https://twitter.com/rechsteiner" ]
-                        [ text "@rechsteiner" ]
-                    ]
-                , li []
-                    [ text "Tale Prestmo" ]
-                , li []
-                    [ text "Ragnhild Aalvik – "
-                    , a [ href "https://twitter.com/aaalvik" ]
-                        [ text "@aaalvik" ]
-                    ]
-                , li []
-                    [ text "Aksel Wester – "
-                    , a [ href "https://twitter.com/akselw" ]
-                        [ text "@akselw" ]
-                    ]
-                , li []
-                    [ text "Runar Furenes"
-                    ]
-                ]
-            ]
-        , p []
-            [ h3 []
-                [ text "With help from" ]
-            , ul []
-                [ li []
-                    [ text "Jonatan Austigard – "
-                    , a [ href "https://twitter.com/jonaaust" ]
-                        [ text "@jonaaust" ]
-                    ]
-                , li []
-                    [ text "Lars Kinn Ekroll" ]
-                , li []
-                    [ text "Martin Solheim" ]
-                ]
-            ]
-        ]
+    let
+        aboutUsText =
+            """
+## The Elm Conference With A Nordic Twist
+
+### What to expect?
+
+A full day conference filled with interesting talks and discussions about Elm.
+The conference will feature a total of 18 speakers, with talks about a variety of topics.
+For parts of the day there will be two tracks with talks running in parallel.
+
+There  will be a conference dinner and afterparty at the venue shortly after the finishing keynote.
+On the day before the conference, there will be a pre-conf event with workshops and possibly some lightning talks.
+This is an excellent opportunity to mingle with other Elm enthusiasts before the conference.
+
+### Why Elm?
+
+Elm is a fast-growing programming language for the web that significantly improves development speed, reliability, maintainability and developer experience.
+With React and Redux’s popularity on the frontend, functional programming practices are going mainstream and many are looking to Elm as the natural next step.
+
+### Intended audience
+
+The intended audience for the conference ranges from the curious JavaScript developer to the experienced functional programmer.
+
+### Where?
+
+The conference will be hosted at the beautiful **Christiania Theater** in downtown Oslo.
+
+### Pre-Conference Event
+
+Details aren't finalized yet, but there will be something happening on Friday night before the conference.
+If travelling to Oslo, you'll want to be in town for this!
+
+### Tickets
+
+[Available now!](https://www.checkin.no/osloelmday)
+
+### Food
+
+Coffee, tea and fruit will be provided throughout the day.
+The ticket price includes lunch during the event and dinner at the afterparty.
+Please contact us if you have any dietary restrictions.
+
+### Afterparty
+
+Will be hosted at the venue. We hope to see you there!
+
+### Contact us
+
+- [@OsloElmDays](https://twitter.com/osloelmday)
+- [hello@osloelmdays.no](mailto:hello@osloelmdays.no)
+
+### Who are we?
+
+The conference is organized by enthusiastic members of the Norwegian Elm community.
+
+
+* Erik Wendel – [@ewndl](https://twitter.com/ewndl)
+* Ingar Almklov – [@ingara](https://twitter.com/ingara)
+* Kjetil Valle – [@kjetilvalle](https://twitter.com/kjetilvalle)
+* Erlend Hamberg – [@ehamberg](https://twitter.com/ehamberg)
+* Ragnhild Aalvik – [@aaalvik](https://twitter.com/aaalvik)
+* Aksel Wester – [@akselw](https://twitter.com/akselw)
+* Jonas Berdal – [@jonasberdal](https://twitter.com/jonasberdal)
+* Kenneth Tiller –
+* Ovin Teige –
+"""
+    in
+    p []
+        [ Markdown.toHtml [] aboutUsText ]
 
 
 viewCodeOfConduct : Html a
@@ -172,16 +116,20 @@ viewCodeOfConduct =
 
 viewSpeakers : Html a
 viewSpeakers =
+    let
+        speakersText =
+            """
+## Speakers
+
+The conference will have two tracks and we have a total of eighteen speakers booked!
+
+There might also be a panel debate, in order to provide an arena for discussion or Q&A within the community.
+
+Our current speaker lineup consist of world-renowned Elm experts, experienced with using Elm in production.
+    """
+    in
     div [] <|
-        [ h2 []
-            [ text "Speakers" ]
-        , p []
-            [ text "The conference will have two tracks and we have a total of eighteen speakers booked!" ]
-        , p []
-            [ text "There might also be a panel debate, in order to provide an arena for discussion or Q&A within the community." ]
-        , p []
-            [ text "Our current speaker lineup consist of world-renowned Elm experts, experienced with using Elm in production." ]
-        ]
+        [ p [] [ Markdown.toHtml [] speakersText ] ]
             ++ List.map viewSpeaker Speakers.all
 
 
