@@ -107,8 +107,8 @@ viewSchedule expandableStuff =
     let
         startTime =
             Time.partsToPosix timeZone
-                { year = 2019
-                , month = Time.Feb
+                { year = 2020
+                , month = Time.May
                 , day = 16
                 , hour = 10
                 , minute = 0
@@ -144,10 +144,10 @@ viewPreConf expandableStuff =
 
         startTime =
             Time.partsToPosix timeZone
-                { year = 2019
-                , month = Time.Feb
+                { year = 2020
+                , month = Time.May
                 , day = 15
-                , hour = 17
+                , hour = 10
                 , minute = 0
                 , second = 0
                 , millisecond = 0
@@ -155,8 +155,8 @@ viewPreConf expandableStuff =
 
         startTimeBeer =
             Time.partsToPosix timeZone
-                { year = 2019
-                , month = Time.Feb
+                { year = 2020
+                , month = Time.May
                 , day = 15
                 , hour = 20
                 , minute = 0

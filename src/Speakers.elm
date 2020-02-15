@@ -1,4 +1,36 @@
-module Speakers exposing (Speaker, all, brian, dan, einar, emma, filip, james, jonas, ju, kris, luca, manuel, matthew, ossi, richard, robin, teodor, tessa, viktor)
+module Speakers exposing (Speaker, all, brian, dan, einar, emma, filip, james, jonas, ju, kris, luca, manuel, matthew, ossi, promoted, richard, robin, teodor, tessa, viktor)
+
+
+all : List Speaker
+all =
+    [ richard
+    , kris
+    , tessa
+    , matthew
+    , einar
+    , brian
+    , manuel
+    , robin
+    , james
+    , ossi
+    , viktor
+    , ju
+    , luca
+    , emma
+    , jonas
+    , dan
+    , filip
+    , teodor
+    ]
+
+
+promoted : List Speaker
+promoted =
+    [ richard
+    , tessa
+    , kris
+    , matthew
+    ]
 
 
 type alias Speaker =
@@ -171,26 +203,3 @@ teodor =
     , bio = "With an interdisciplinary background in computer science, structural engineering and teaching, Teodor is currently responsible for the technology development in Pure Logic, a start-up aiming to improve descision making by using stochastic models. He is also working with NTNU's department of Structural Engineering's to aid their efforts to digitize their engineering courses. Since 2016, Teodor has volunteered with Teach Kids Code (Lær Kidsa Koding), teaching children how to create with technology in code clubs. After guiding the Web course (HTML, CSS and JavaScript), Teodor took initiative to bring Elm into Oslo Code Club."
     , imageUrl = "images/teodor-lunaas-heggelund.png"
     }
-
-
-all : List Speaker
-all =
-    [ richard
-    , kris
-    , tessa
-    , matthew
-    , einar
-    , brian
-    , manuel
-    , robin
-    , james
-    , ossi
-    , viktor
-    , ju
-    , luca
-    , emma
-    , jonas
-    , dan
-    , filip
-    , teodor
-    ]

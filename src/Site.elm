@@ -106,10 +106,8 @@ header_ =
                 [ text "Summary" ]
             , ul [ class "summary__list" ]
                 [ li [ class "animate animate--small seq-1" ]
-                    [ text "1 day" ]
+                    [ text "2 days" ]
                 , li [ class "animate animate--small seq-2" ]
-                    [ text "2 tracks" ]
-                , li [ class "animate animate--small seq-3" ]
                     [ text "18 talks" ]
                 , li [ class "animate animate--small seq-4" ]
                     [ text "200 seats" ]
@@ -174,12 +172,12 @@ footer_ hidden =
                     [ text "Contact" ]
                 , ul []
                     [ li []
-                        [ a [ href "https://twitter.com/osloelmday" ]
-                            [ text "@OsloElmDay" ]
+                        [ a [ href "https://twitter.com/osloelmdays" ]
+                            [ text "@OsloElmDays" ]
                         ]
                     , li []
-                        [ a [ href "mailto:hello@osloelmday.no" ]
-                            [ text "hello@osloelmday.no" ]
+                        [ a [ href "mailto:hello@osloelmdays.no" ]
+                            [ text "hello@osloelmdays.no" ]
                         ]
                     ]
                 , ul []
@@ -212,16 +210,16 @@ information =
                 [ text "What?" ]
             , p []
                 [ span []
-                    [ text "A one-day conference about the "
+                    [ text "A two-day conference about the "
                     , a [ href "http://elm-lang.org/", target "_blank" ]
                         [ text "Elm programming language" ]
                     , text " and practical use of Elm in real production systems."
                     ]
                 ]
             , p [ class "morespacebro" ]
-                [ text "The conference will be held in an old factory by the Aker river called "
-                , a [ href "https://goo.gl/maps/JGAXK2cdq1R2" ]
-                    [ text "Månefisken" ]
+                [ text "The conference will be held in an old theater in downtown Oslo called "
+                , a [ href "https://g.page/HotelChristianiaTeater" ]
+                    [ text "Christiania Theater" ]
                 , text "."
                 ]
             , a [ Route.href Route.About ]
@@ -257,8 +255,4 @@ viewPromotedSpeakers =
     in
     ul [ class "who__list" ] <|
         List.map viewSpeaker
-            [ Speakers.richard
-            , Speakers.tessa
-            , Speakers.kris
-            , Speakers.matthew
-            ]
+            Speakers.promoted
