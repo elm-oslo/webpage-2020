@@ -373,11 +373,14 @@ ul {
   justify-content: space-between;
 }
 
+.information {
+  justify-content: space-evenly;
+}
+
 .what {
   width: 36%;
 }
 .who {
-  width: 25%;
 }
 
 .why {
@@ -1151,10 +1154,6 @@ ul {
 
   .why {
     margin-top: 2em;
-  }
-
-  .who__avatar {
-    float: unset;
   }
 }
 

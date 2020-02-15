@@ -236,16 +236,6 @@ information =
                 ]
                 [ text "See more" ]
             ]
-        , section [ class "information__block animate--medium seq-4 animate why" ]
-            [ h2 []
-                [ text "Why?" ]
-            , p [ class "morespacebro" ]
-                [ text "The Elm community is growing, with more and more companies using Elm in their projects. It’s time to start sharing our experiences." ]
-            , a
-                [ Route.href <| Route.Schedule
-                ]
-                [ text "See full schedule" ]
-            ]
         ]
 
 
