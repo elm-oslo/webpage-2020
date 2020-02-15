@@ -84,7 +84,7 @@ header_ =
             [ text "Oslo Elm Day" ]
         , logo
         , p [ class "animate animate--fixed header__date" ]
-            [ text "Saturday February 16" ]
+            [ text "May 15 and 16 2020" ]
         , div [ class "about_btn" ]
             [ a [ Route.href Route.About ]
                 [ text "About" ]
