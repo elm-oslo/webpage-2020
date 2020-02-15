@@ -44,22 +44,23 @@ viewPage expandableStuff page =
                     , Route.href Route.About
                     ]
                     [ text "What?" ]
-                , a
-                    [ classList
-                        [ ( "content__menu-item", True )
-                        , ( "menu-item-active", page == Speakers )
-                        ]
-                    , Route.href Route.Speakers
-                    ]
-                    [ text "Who?" ]
-                , a
-                    [ classList
-                        [ ( "content__menu-item", True )
-                        , ( "menu-item-active", page == Schedule )
-                        ]
-                    , Route.href Route.Schedule
-                    ]
-                    [ text "Schedule" ]
+
+                -- , a
+                --     [ classList
+                --         [ ( "content__menu-item", True )
+                --         , ( "menu-item-active", page == Speakers )
+                --         ]
+                --     , Route.href Route.Speakers
+                --     ]
+                --     [ text "Who?" ]
+                -- , a
+                --     [ classList
+                --         [ ( "content__menu-item", True )
+                --         , ( "menu-item-active", page == Schedule )
+                --         ]
+                --     , Route.href Route.Schedule
+                --     ]
+                --     [ text "Schedule" ]
                 ]
             , a [ class "content__menu-close", Route.href Route.Home ]
                 [ text "Close" ]
