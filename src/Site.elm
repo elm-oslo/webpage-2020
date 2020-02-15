@@ -145,20 +145,35 @@ footer_ hidden =
             [ section [ class "information__block sponsors-platinum" ]
                 [ h3 [ class "platinum" ]
                     [ text "Platinum Sponsor" ]
-                , p [ class "sponsor-forsale sponsor__list" ]
-                    (List.map viewSponsor platinum)
+                , case platinum of
+                    [] ->
+                        p [] [ text "Your company?" ]
+
+                    _ ->
+                        p [ class "sponsor-forsale sponsor__list" ]
+                            (List.map viewSponsor platinum)
                 ]
             , section [ class "information__block sponsors-gold" ]
                 [ h3 []
                     [ text "Gold Sponsors" ]
-                , p [ class "sponsor__list" ]
-                    (List.map viewSponsor gold)
+                , case gold of
+                    [] ->
+                        p [] [ text "Your company?" ]
+
+                    _ ->
+                        p [ class "sponsor__list" ]
+                            (List.map viewSponsor gold)
                 ]
             , section [ class "information__block sponsors-silver" ]
                 [ h3 []
                     [ text "Silver Sponsors" ]
-                , p [ class "sponsor-forsale sponsor__list" ]
-                    (List.map viewSponsor silver)
+                , case silver of
+                    [] ->
+                        p [] [ text "Your company?" ]
+
+                    _ ->
+                        p [ class "sponsor-forsale sponsor__list" ]
+                            (List.map viewSponsor silver)
                 ]
             , section [ class "information__block sponsors-about" ]
                 [ h3 []
