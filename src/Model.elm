@@ -5,7 +5,6 @@ module Model exposing
     , ScheduleEntry(..)
     , Sponsor
     , SponsorTier(..)
-    , scheduleEntries
     , sponsors
     )
 
@@ -65,64 +64,4 @@ type ScheduleEntry
 
 sponsors : List Sponsor
 sponsors =
-    [ { name = "bekk"
-      , url = "https://www.bekk.no"
-      , imageUrl = "images/bekk_logo.svg"
-      , tier = Platinum
-      }
-    , { name = "kodemaker"
-      , url = "https://www.kodemaker.no"
-      , imageUrl = "images/kodemaker_logo.svg"
-      , tier = Gold
-      }
-    , { name = "scelto"
-      , url = "https://scelto.no/"
-      , imageUrl = "images/scelto_logo.svg"
-      , tier = Gold
-      }
-    , { name = "lovdata"
-      , url = "https://lovdata.no/"
-      , imageUrl = "images/lovdata_logo.svg"
-      , tier = Gold
-      }
-    , { name = "eggs"
-      , url = "https://eggsdesign.com/"
-      , imageUrl = "images/eggs_logo.svg"
-      , tier = Gold
-      }
-    , { name = "dialog-exe"
-      , url = "https://www.dx.no"
-      , imageUrl = "images/dx_logo.svg"
-      , tier = Silver
-      }
-    , { name = "rakuten"
-      , url = "https://global.rakuten.com/corp/"
-      , imageUrl = "images/rakuten_logo.svg"
-      , tier = Silver
-      }
-    , { name = "blank"
-      , url = "https://blank.no/"
-      , imageUrl = "images/blank_logo.svg"
-      , tier = Gold
-      }
-    , { name = "arktekk"
-      , url = "https://arktekk.no/"
-      , imageUrl = "images/arktekk_logo.svg"
-      , tier = Silver
-      }
-    , { name = "knowit"
-      , url = "https://knowit.no/"
-      , imageUrl = "images/knowit_logo.svg"
-      , tier = Gold
-      }
-    , { name = "finn"
-      , url = "https://finn.no/"
-      , imageUrl = "images/finn_logo.svg"
-      , tier = Silver
-      }
-    ]
-
-
-scheduleEntries : List ScheduleEntry
-scheduleEntries =
     []

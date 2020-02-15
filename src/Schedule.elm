@@ -45,61 +45,7 @@ type ScheduleEntry
 
 schedule : List ScheduleEntry
 schedule =
-    [ Other "Introduction" 10
-    , SingleTalk Talks.richard 40
-    , Hidden "Break" 5
-    , SingleTalk Talks.ossi 20
-    , Hidden "Break" 20
-    , DoubleTalk
-        Talks.luca
-        Talks.brian
-        20
-    , Hidden "Break" 10
-    , DoubleTalk
-        Talks.teodor
-        Talks.emma
-        20
-    , Hidden "Break" 10
-    , DoubleTalk
-        Talks.einar
-        Talks.james
-        20
-    , Hidden "Break" 20
-    , SingleTalk
-        Talks.tessa
-        30
-    , Other "Lunch" 60
-    , SingleTalk
-        Talks.matthew
-        30
-    , Hidden "Break" 10
-    , DoubleTalk
-        Talks.dan
-        Talks.robin
-        20
-    , Hidden "Break" 10
-    , DoubleTalk
-        Talks.jonas
-        Talks.filip
-        20
-    , Hidden "Break" 10
-    , DoubleTalk
-        Talks.ju
-        Talks.viktor
-        20
-    , Hidden "Break" 20
-    , SingleTalk
-        Talks.manuel
-        20
-    , Hidden "Break" 5
-    , SingleTalk
-        Talks.kris
-        30
-    , Other "Wrap up" 5
-    , Hidden "Break" 30
-    , Other "Dinner" 90
-    , Other "Party 🎉" 240
-    ]
+    []
 
 
 viewSchedule : Dict String Bool -> Html Msg
