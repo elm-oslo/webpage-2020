@@ -71,8 +71,23 @@ a:hover {
 
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   padding: 3rem 2rem;
+}
+
+.info {
+  max-width: 50%;
+
+  font-size: 1.3rem;
+  text-align: left;
+}
+
+@media screen and (max-width: 730px) {
+  .info {
+    max-width: 100%;
+    padding: 0 2rem;
+  }
 }
 
 .form {
