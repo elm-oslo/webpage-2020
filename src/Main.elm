@@ -8,6 +8,7 @@ import Html.Events exposing (onClick, onInput, onSubmit)
 import Http
 import Json.Decode as Decode
 import Json.Encode as Encode
+import Markdown
 import RemoteData exposing (RemoteData(..), WebData)
 import Validate
 
@@ -99,15 +100,14 @@ view : Model -> Html Msg
 view model =
     div [ class "container" ]
         [ h1 [] [ text "Oslo Elm Days 2020" ]
-        , p [ class "intro" ]
-            [ text "May 15 and 16 in Oslo, Norway"
-            ]
-        , p [ class "cfp" ]
-            [ text "Want to speak at Oslo Elm Days 2020?"
-            , br []
-            , a [ href "https://forms.gle/T4UXj83Fs7jetR577" ]
-                [ text "Check out our Call for Presentations!" ]
-            ]
+        , p [ class "info" ] [ Markdown.toHtml [] """
+### [March 11 2020]
+Oslo Elm Days is unfortunately postponed due to the ongoing situation with the Coronavirus.
+
+For now, just know that we really want there to be a new Oslo Elm Days, but that we cannot say whether we’ll be able to make it happen in 2020 or will have to wait until 2021.
+
+We are working on figuring out how to proceed, and will post new information here and on Twitter ([@osloelmdays](https://twitter.com/osloelmdays)) as soon as something is decided!
+        """ ]
         , case model.submitStatus of
             Success _ ->
                 p [] [ text "Thanks for subscribing!" ]
