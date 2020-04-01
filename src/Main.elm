@@ -101,12 +101,13 @@ view model =
     div [ class "container" ]
         [ h1 [] [ text "Oslo Elm Days 2020" ]
         , p [ class "info" ] [ Markdown.toHtml [] """
-### [March 11 2020]
-Oslo Elm Days is unfortunately postponed due to the ongoing situation with the Coronavirus.
+### [April 1 2020]
 
-For now, just know that we really want there to be a new Oslo Elm Days, but that we cannot say whether we’ll be able to make it happen in 2020 or will have to wait until 2021.
+We sadly have to cancel Oslo Elm Days 2020 due to the escalation of the  Coronavirus pandemic.
 
-We are working on figuring out how to proceed, and will post new information here and on Twitter ([@osloelmdays](https://twitter.com/osloelmdays)) as soon as something is decided!
+We hope for a comeback next year, and aim to deliver an awesome conference for you all then. Meanwhile, take care of yourself and your loved ones!
+
+For future updates on when Oslo Elm Days 2021 will happen, please follow us on Twitter ([@osloelmdays](https://twitter.com/osloelmdays)) or subscribe to our newsletter!
         """ ]
         , case model.submitStatus of
             Success _ ->
